@@ -171,6 +171,39 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .hero-illustration.shadowed {
   filter: drop-shadow(0 5px 8px color-mix(in oklab, var(--ink) 30%, transparent));
 }
+
+/* a little stack of framed "photos" — used where the illustration IS the mock-up */
+.photo-stack {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  justify-self: end;
+}
+@media (min-width: 768px) { .photo-stack { max-width: 280px; } }
+.photo-card {
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 4px 5px 0 0 var(--ink);
+  padding: 0.6rem;
+}
+.photo-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+.photo-back {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-9deg) translate(-10%, 8%);
+  z-index: 1;
+}
+.photo-front {
+  position: relative;
+  transform: rotate(4deg);
+  z-index: 2;
+}
 .badge {
   display: inline-block;
   transform: rotate(-2deg);
