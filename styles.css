@@ -341,6 +341,90 @@ footer.site .foot-links a { text-decoration: none; text-underline-offset: 4px; }
 footer.site .foot-links a:hover { text-decoration: underline; }
 footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted-foreground); }
 
+/* social icons */
+.social-row {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: 3px 3px 0 0 var(--ink);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  text-decoration: none;
+  color: var(--ink);
+}
+.social-icon:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 var(--ink);
+}
+.social-icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+/* about page */
+.about-card {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2.5rem;
+}
+@media (min-width: 768px) { .about-card { padding: 3rem; } }
+.about-card p {
+  margin: 0 0 1.1rem;
+  font-size: 1.15rem;
+}
+.about-card p:last-child { margin-bottom: 0; }
+.about-card p.pull {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1.15;
+  color: var(--coral-foreground);
+  margin: 1.5rem 0;
+}
+
+/* portfolio placeholder grid */
+.portfolio-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.portfolio-tile {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+.portfolio-tile svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke: var(--muted-foreground);
+  fill: none;
+  stroke-width: 1.4;
+}
+.portfolio-note {
+  text-align: center;
+  color: var(--muted-foreground);
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
 /* trial prompt modal */
 .modal-overlay {
   position: fixed;
