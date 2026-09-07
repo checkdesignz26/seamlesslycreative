@@ -198,6 +198,27 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .back-link:hover { text-decoration: underline; }
 .hero-image { overflow: hidden; padding: 0.75rem; min-width: 0; }
 
+/* small illustration badge shown beside a title */
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: nowrap;
+}
+.title-row h1, .title-row .app-name { margin-top: 0; min-width: 0; }
+.title-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 0 var(--ink);
+  object-fit: cover;
+}
+@media (min-width: 640px) {
+  .title-icon { width: 4.25rem; height: 4.25rem; }
+}
+
 /* collection */
 .collection {
   max-width: 72rem;
