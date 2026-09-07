@@ -171,6 +171,9 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .hero-illustration.shadowed {
   filter: drop-shadow(0 5px 8px color-mix(in oklab, var(--ink) 30%, transparent));
 }
+.hero-illustration.contact-icon {
+  filter: saturate(0.65) drop-shadow(0 5px 8px color-mix(in oklab, var(--ink) 30%, transparent));
+}
 
 /* a little stack of framed "photos" — used where the illustration IS the mock-up */
 .photo-stack {
