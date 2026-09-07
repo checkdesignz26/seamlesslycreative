@@ -168,6 +168,9 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   justify-self: end;
 }
 @media (min-width: 768px) { .hero-illustration { max-width: 320px; } }
+.hero-illustration.shadowed {
+  filter: drop-shadow(0 5px 8px color-mix(in oklab, var(--ink) 30%, transparent));
+}
 .badge {
   display: inline-block;
   transform: rotate(-2deg);
