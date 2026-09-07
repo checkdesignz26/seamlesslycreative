@@ -196,7 +196,7 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .photo-back {
   position: absolute;
   inset: 0;
-  transform: rotate(-9deg) translate(-10%, 8%);
+  transform: rotate(-11deg) translate(-26%, 12%);
   z-index: 1;
 }
 .photo-front {
