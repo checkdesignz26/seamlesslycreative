@@ -166,9 +166,11 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   width: 100%;
   max-width: 300px;
   justify-self: end;
+  mix-blend-mode: multiply;
 }
 @media (min-width: 768px) { .hero-illustration { max-width: 320px; } }
 .hero-illustration.shadowed {
+  mix-blend-mode: normal;
   filter: drop-shadow(0 5px 8px color-mix(in oklab, var(--ink) 30%, transparent));
 }
 .badge {
