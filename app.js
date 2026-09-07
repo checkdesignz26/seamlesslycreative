@@ -45,3 +45,41 @@
     }
   });
 })();
+
+(function () {
+  var form = document.getElementById("contact-form");
+  if (!form) return;
+
+  var status = document.getElementById("form-status");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    status.textContent = "Sending…";
+    status.className = "form-status";
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    })
+      .then(function (response) {
+        if (response.ok) {
+          form.reset();
+          form.hidden = true;
+          status.textContent = "Thanks! Your message is on its way — I'll get back to you soon. 💛";
+          status.className = "form-status success";
+          return;
+        }
+        return response.json().then(function (data) {
+          var detail =
+            data && data.errors && data.errors.map(function (err) { return err.message; }).join(", ");
+          status.textContent = detail || "Something went wrong — please try emailing me directly instead.";
+          status.className = "form-status error";
+        });
+      })
+      .catch(function () {
+        status.textContent = "Something went wrong — please try emailing me directly instead.";
+        status.className = "form-status error";
+      });
+  });
+})();

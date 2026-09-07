@@ -56,10 +56,28 @@
   </section>
 
   <section class="page-section">
-    <div class="doodle-card about-card" style="max-width: 34rem; text-align: center; transform: rotate(-0.4deg);">
-      <p>The best way to reach me is email — <a href="mailto:checkdesignz@gmail.com" style="text-decoration: underline; text-underline-offset: 3px;">checkdesignz@gmail.com</a></p>
-      <p>I read every message myself (it's just me over here), so it might take a day or two to get back to you — but I will.</p>
+    <div class="doodle-card contact-form-card" style="transform: rotate(-0.4deg);">
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mdeowobr" method="POST">
+        <div class="form-field">
+          <label for="name">name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required />
+        </div>
+        <div class="form-field">
+          <label for="email">email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required />
+        </div>
+        <div class="form-field">
+          <label for="message">message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New message from SeamlesslyCreative" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit" class="doodle-pill cta-coral contact-submit">send message</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
+
+    <p class="portfolio-note">Prefer your own inbox? Email me directly at <a href="mailto:checkdesignz@gmail.com" style="text-decoration: underline; text-underline-offset: 3px;">checkdesignz@gmail.com</a></p>
 
     <div class="social-row">
       <a class="social-icon" href="https://instagram.com/check_designz" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -103,5 +121,6 @@
   <p class="colophon">SeamlesslyCreative · drawn with love, one wobbly line at a time</p>
 </footer>
 
+<script src="app.js"></script>
 </body>
 </html>
