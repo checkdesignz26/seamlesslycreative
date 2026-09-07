@@ -155,19 +155,19 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   align-items: center;
   gap: 2.5rem;
 }
-.hero > div, .app-hero > div, .app-hero > img { min-width: 0; }
-.app-hero.align-top { align-items: start; }
+.hero > div, .app-hero > div, .hero > img, .app-hero > img { min-width: 0; }
+.hero.align-top, .app-hero.align-top { align-items: start; }
 @media (min-width: 768px) {
   .hero, .app-hero { grid-template-columns: 1fr 1fr; }
 }
 
 /* borderless illustration, sized down and tucked near the title */
-.about-illustration {
+.hero-illustration {
   width: 100%;
   max-width: 300px;
   justify-self: end;
 }
-@media (min-width: 768px) { .about-illustration { max-width: 320px; } }
+@media (min-width: 768px) { .hero-illustration { max-width: 320px; } }
 .badge {
   display: inline-block;
   transform: rotate(-2deg);
