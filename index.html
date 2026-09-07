@@ -14,344 +14,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" />
-<style>
-  :root {
-    --radius: 1.1rem;
-    --cream: oklch(0.965 0.021 88);
-    --ink: oklch(0.29 0.045 40);
-    --coral: oklch(0.76 0.11 35);
-    --coral-foreground: oklch(0.27 0.05 35);
-    --sage: oklch(0.66 0.06 145);
-    --sage-foreground: oklch(0.25 0.04 145);
-    --mustard: oklch(0.77 0.12 82);
-    --blush: oklch(0.87 0.06 20);
-    --lilac: oklch(0.83 0.07 300);
-    --card: oklch(0.99 0.012 90);
-    --muted-foreground: oklch(0.48 0.035 55);
-    --font-display: "Caveat", cursive;
-    --font-body: "Patrick Hand", cursive;
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    margin: 0;
-    background-color: var(--cream);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 1.125rem;
-    background-image: radial-gradient(oklch(0.86 0.04 80 / 0.5) 1.2px, transparent 1.3px);
-    background-size: 22px 22px;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3 {
-    font-family: var(--font-display);
-    line-height: 1.05;
-    margin: 0;
-  }
-
-  img { max-width: 100%; height: auto; display: block; }
-
-  a { color: inherit; }
-
-  .wrap {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-
-  .muted { color: var(--muted-foreground); }
-
-  .doodle-card {
-    position: relative;
-    background: var(--card);
-    border: 2.5px solid var(--ink);
-    border-radius: 250px 18px 235px 18px / 18px 220px 18px 235px;
-    box-shadow: 5px 6px 0 0 var(--ink);
-  }
-
-  .doodle-pill {
-    display: inline-block;
-    border: 2.5px solid var(--ink);
-    border-radius: 140px 26px 140px 26px / 26px 130px 26px 130px;
-    box-shadow: 4px 4px 0 0 var(--ink);
-    transition: transform 150ms ease, box-shadow 150ms ease;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .doodle-pill:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 0 var(--ink);
-  }
-  .doodle-pill[aria-disabled="true"] {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-  .doodle-pill[aria-disabled="true"]:hover {
-    transform: none;
-    box-shadow: 4px 4px 0 0 var(--ink);
-  }
-
-  .tape { position: relative; }
-  .tape::before {
-    content: "";
-    position: absolute;
-    top: -0.9rem;
-    left: 50%;
-    width: 5.5rem;
-    height: 1.6rem;
-    transform: translateX(-50%) rotate(-4deg);
-    background: color-mix(in oklab, var(--mustard) 65%, transparent);
-    border: 1.5px dashed color-mix(in oklab, var(--ink) 35%, transparent);
-  }
-
-  .wiggle { animation: wiggle 4s ease-in-out infinite; }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-1.5deg) translateY(0); }
-    50% { transform: rotate(1.5deg) translateY(-6px); }
-  }
-
-  /* header */
-  header.site {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 0;
-  }
-  .header-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-  }
-  .logo-mark { font-size: 1.9rem; }
-  .logo-text .name {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    line-height: 1;
-    color: var(--coral-foreground);
-  }
-  .logo-text .sub {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--muted-foreground);
-  }
-  nav.site-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem 1rem;
-    font-size: 1.1rem;
-  }
-  nav.site-nav a { text-decoration: none; text-underline-offset: 4px; }
-  nav.site-nav a:hover { text-decoration: underline; }
-
-  /* hero */
-  .hero {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 3.5rem 1.25rem 2rem;
-    display: grid;
-    align-items: center;
-    gap: 2.5rem;
-  }
-  .hero > div { min-width: 0; }
-  @media (min-width: 768px) {
-    .hero { grid-template-columns: 1fr 1fr; }
-  }
-  .badge {
-    display: inline-block;
-    transform: rotate(-2deg);
-    background: color-mix(in oklab, var(--mustard) 60%, transparent);
-    padding: 0.25rem 0.75rem;
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-  }
-  .hero h1 {
-    font-size: 4.25rem;
-  }
-  @media (min-width: 640px) { .hero h1 { font-size: 5rem; } }
-  .hero .underline-wrap { position: relative; display: inline-block; }
-  .hero .underline-wrap svg { position: absolute; bottom: -0.5rem; left: 0; width: 100%; }
-  .hero p.lede {
-    margin-top: 1.5rem;
-    max-width: 28rem;
-    font-size: 1.25rem;
-    color: var(--muted-foreground);
-  }
-  .hero .cta-row {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-  }
-  .cta-coral {
-    background: var(--coral);
-    color: var(--coral-foreground);
-    padding: 0.75rem 2rem;
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-  }
-  .hero .aside-note { transform: rotate(2deg); color: var(--muted-foreground); font-size: 1.1rem; }
-  .hero-image { overflow: hidden; padding: 0.75rem; min-width: 0; }
-
-  /* collection */
-  .collection {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 3.5rem 1.25rem;
-  }
-  .section-title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 0.75rem;
-    transform: rotate(-1deg);
-  }
-  .section-sub {
-    text-align: center;
-    font-size: 1.25rem;
-    color: var(--muted-foreground);
-    margin-bottom: 3rem;
-  }
-
-  .app-card {
-    padding: 1.5rem;
-    margin-bottom: 3.5rem;
-  }
-  @media (min-width: 768px) { .app-card { padding: 2rem; } }
-
-  .app-top {
-    display: grid;
-    gap: 2rem;
-    align-items: center;
-  }
-  .app-top > div { min-width: 0; }
-  @media (min-width: 768px) { .app-top { grid-template-columns: 1fr 1fr; } }
-  .app-top .order-2 { order: 2; }
-
-  .app-eyebrow { color: var(--muted-foreground); font-size: 1rem; }
-  .app-name { margin-top: 0.25rem; font-size: 3rem; }
-  .app-blurb { margin-top: 0.75rem; font-size: 1.25rem; color: var(--muted-foreground); }
-  .app-features-mini { margin: 1rem 0 0; padding: 0; list-style: none; font-size: 1.1rem; }
-  .app-features-mini li { margin-bottom: 0.15rem; }
-  .app-cta-row { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
-  .app-cta-row .try-link { font-size: 1.1rem; text-decoration: none; text-underline-offset: 4px; }
-  .app-cta-row .try-link:hover { text-decoration: underline; }
-  .app-cta-row .coming-soon { color: var(--muted-foreground); font-size: 1.1rem; }
-
-  .app-image-frame {
-    overflow: hidden;
-    border-radius: 1rem;
-    border: 2px solid var(--ink);
-    background: var(--card);
-    padding: 0.5rem;
-  }
-  .app-image-frame img { border-radius: inherit; width: 100%; }
-
-  .app-details {
-    margin-top: 2.5rem;
-    border-top: 2px dashed color-mix(in oklab, var(--ink) 30%, transparent);
-    padding-top: 2rem;
-  }
-  .app-details h4 {
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    margin: 0 0 1rem;
-  }
-  .feature-grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 640px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .feature-grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .feature-tile {
-    padding: 1.1rem 1.25rem;
-  }
-  .feature-tile h5 { font-family: var(--font-display); font-size: 1.5rem; margin: 0; }
-  .feature-tile p { margin: 0.25rem 0 0; color: var(--muted-foreground); }
-
-  .reviews {
-    margin-top: 2rem;
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 768px) { .reviews { grid-template-columns: 1fr 1fr 1fr; } }
-  .review { padding: 1.25rem; }
-  .review .stars { font-size: 1.25rem; }
-  .review blockquote { margin: 0.5rem 0 0; font-size: 1.15rem; }
-  .review figcaption { margin-top: 0.75rem; color: var(--muted-foreground); }
-
-  /* swatches strip */
-  .swatch-strip { max-width: 60rem; margin: 0 auto; padding: 1rem 1.25rem 2rem; }
-  .swatch-strip figcaption { margin-top: 0.75rem; text-align: center; color: var(--muted-foreground); font-size: 1.1rem; }
-
-  /* promises */
-  .promises {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 3rem 1.25rem;
-  }
-  .promise-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 768px) { .promise-grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .promise-card { padding: 1.5rem; }
-  .promise-emoji { font-size: 2.25rem; }
-  .promise-card h3 { font-size: 1.75rem; margin-top: 0.5rem; }
-  .promise-card p { margin-top: 0.25rem; color: var(--muted-foreground); }
-
-  /* final cta */
-  .final-cta { max-width: 46rem; margin: 0 auto; padding: 1.25rem 1.25rem 4rem; }
-  .final-cta .doodle-card {
-    padding: 2.5rem;
-    text-align: center;
-    transform: rotate(-1deg);
-  }
-  .final-cta h2 { font-size: 3rem; }
-  .final-cta p { margin: 0.75rem auto 0; max-width: 26rem; font-size: 1.25rem; color: var(--muted-foreground); }
-  .final-cta .doodle-pill { margin-top: 1.75rem; }
-
-  /* footer */
-  footer.site {
-    margin-top: 2rem;
-    border-top: 2px dashed color-mix(in oklab, var(--ink) 30%, transparent);
-    padding: 2.5rem 1.25rem;
-  }
-  footer.site .foot-links {
-    max-width: 72rem;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4rem 1.25rem;
-    text-align: center;
-    color: var(--muted-foreground);
-  }
-  footer.site .foot-links a { text-decoration: none; text-underline-offset: 4px; }
-  footer.site .foot-links a:hover { text-decoration: underline; }
-  footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted-foreground); }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header class="site">
   <div class="header-row">
-    <a class="logo" href="#top">
+    <a class="logo" href="index.html">
       <span class="logo-mark" aria-hidden="true">✿</span>
       <span class="logo-text">
         <span class="name">Seamless Creative</span>
@@ -359,11 +28,11 @@
       </span>
     </a>
     <nav class="site-nav">
-      <a href="#creative-resizer">Creative Resizer</a>
-      <a href="#mockup-studio">Mock-up Studio</a>
-      <a href="#pattern-pages">Pattern Pages</a>
-      <a href="#magic-collection-builder">Magic Collection Builder</a>
-      <a href="#pattern-playground">Pattern Playground</a>
+      <a href="creative-resizer.html">Creative Resizer</a>
+      <a href="mockup-studio.html">Mock-up Studio</a>
+      <a href="pattern-pages.html">Pattern Pages</a>
+      <a href="magic-collection-builder.html">Magic Collection Builder</a>
+      <a href="pattern-playground.html">Pattern Playground</a>
     </nav>
   </div>
 </header>
@@ -400,207 +69,107 @@
     <h2 class="section-title">the collection</h2>
     <p class="section-sub">five apps, one studio — use one or use the lot</p>
 
-    <!-- Creative Resizer -->
-    <article id="creative-resizer" class="doodle-card app-card" style="background: color-mix(in oklab, var(--coral) 45%, var(--card)); transform: rotate(-0.7deg);">
+    <article class="doodle-card app-card" style="background: color-mix(in oklab, var(--coral) 45%, var(--card)); transform: rotate(-0.7deg);">
       <div class="app-top">
         <div>
           <p class="app-eyebrow">📐 one artwork, every size you need</p>
           <h3 class="app-name">Creative Resizer</h3>
           <p class="app-blurb">Pop in a design and get every listing, print and social size back — cropped kindly, never squished.</p>
-          <p class="muted" style="margin-top:0.75rem; font-size:1.1rem;">You drew it once. Creative Resizer does the boring maths so the same artwork fits a shop listing, a print sheet and a story post without you nudging a single corner.</p>
           <ul class="app-features-mini">
             <li>✦ batch everything</li>
             <li>✦ smart, kind crops</li>
             <li>✦ shop-ready presets</li>
           </ul>
           <div class="app-cta-row">
-            <a href="https://creativeresizerpro.checkdesignz.workers.dev" target="_blank" rel="noopener noreferrer" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
-            <a href="https://creativeresizerpro.checkdesignz.workers.dev" target="_blank" rel="noopener noreferrer" class="try-link">try it →</a>
+            <a href="creative-resizer.html" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
           </div>
         </div>
         <div class="app-image-frame">
           <img src="assets/app-resizer.jpg" width="1024" height="768" loading="lazy" alt="Hand-drawn sketch of nested photo frames in different sizes with a measuring tape" />
         </div>
       </div>
-
-      <div class="app-details">
-        <h4>what it can do</h4>
-        <div class="feature-grid">
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>batch everything</h5><p>Drop in a folder of artwork and get every size back in one go.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>smart, kind crops</h5><p>Keeps the good bit in frame instead of chopping off your best flower.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>shop-ready presets</h5><p>Etsy, Shopify, Instagram, Pinterest and print sizes ready to click.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>your own sizes</h5><p>Save the odd dimensions you always need and reuse them forever.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>quality kept</h5><p>Sharp edges and clean colour, no mushy re-saves.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>tidy file names</h5><p>Everything named so you can actually find it later.</p></div>
-        </div>
-        <div class="reviews">
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"I used to spend a whole evening resizing. Now it's a cup of tea's worth of clicking."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="background: color-mix(in oklab, var(--coral) 45%, var(--card)); transform: rotate(1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"The crops actually understand where the pretty part of my design is."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"Batch mode paid for itself the first week."</blockquote><figcaption>— Sample review</figcaption></figure>
-        </div>
-      </div>
     </article>
 
-    <!-- Mock-up Studio -->
-    <article id="mockup-studio" class="doodle-card app-card" style="background: color-mix(in oklab, var(--sage) 45%, var(--card)); transform: rotate(0.7deg);">
+    <article class="doodle-card app-card" style="background: color-mix(in oklab, var(--sage) 45%, var(--card)); transform: rotate(0.7deg);">
       <div class="app-top">
         <div class="order-2">
           <p class="app-eyebrow">☕ see your pattern on real-ish things</p>
           <h3 class="app-name">Mock-up Studio</h3>
           <p class="app-blurb">Wrap your designs around mugs, totes, cushions and fabric so shoppers can picture them at home.</p>
-          <p class="muted" style="margin-top:0.75rem; font-size:1.1rem;">A little props cupboard in your browser. Choose an object, drop your pattern on it, and walk away with a photo-ish mock-up that still feels handmade.</p>
           <ul class="app-features-mini">
             <li>✦ a shelf of objects</li>
             <li>✦ true-to-life wrap</li>
             <li>✦ scale in seconds</li>
           </ul>
           <div class="app-cta-row">
-            <span class="doodle-pill" aria-disabled="true" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">coming soon</span>
-            <span class="coming-soon">still in the workshop</span>
+            <a href="mockup-studio.html" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
           </div>
         </div>
         <div class="app-image-frame">
           <img src="assets/app-mockup.jpg" width="1024" height="768" loading="lazy" alt="Hand-drawn mug and tote bag covered in a soft green pattern" />
         </div>
       </div>
-
-      <div class="app-details">
-        <h4>what it can do</h4>
-        <div class="feature-grid">
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>a shelf of objects</h5><p>Mugs, totes, cushions, notebooks, fabric and wrapping paper.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>true-to-life wrap</h5><p>Patterns curve and fold with the object instead of sitting flat.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>scale in seconds</h5><p>Slide the repeat bigger or smaller until it looks just right.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>swap backdrops</h5><p>Warm wood, linen or plain paper behind your product.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>shadow &amp; light</h5><p>Gentle shadows so nothing looks pasted on.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>listing-ready exports</h5><p>Straight out at the sizes your shop asks for.</p></div>
-        </div>
-        <div class="reviews">
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"My listings finally look like a real brand and it took ten minutes."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="background: color-mix(in oklab, var(--sage) 45%, var(--card)); transform: rotate(1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"Customers keep asking where they can buy the mug. That's a good sign."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"The fabric mock-up sold a licence for me."</blockquote><figcaption>— Sample review</figcaption></figure>
-        </div>
-      </div>
     </article>
 
-    <!-- Pattern Pages -->
-    <article id="pattern-pages" class="doodle-card app-card" style="background: color-mix(in oklab, var(--mustard) 45%, var(--card)); transform: rotate(-0.7deg);">
+    <article class="doodle-card app-card" style="background: color-mix(in oklab, var(--mustard) 45%, var(--card)); transform: rotate(-0.7deg);">
       <div class="app-top">
         <div>
           <p class="app-eyebrow">🌼 hand-made listing pages for your patterns</p>
           <h3 class="app-name">Pattern Pages</h3>
           <p class="app-blurb">Arrange your tiles on a wobbly canvas and download charming listing pages for shops and socials.</p>
-          <p class="muted" style="margin-top:0.75rem; font-size:1.1rem;">Drop in your patterns, fill a slot, scribble on some text. Pattern Pages turns a folder of tiles into listing pages that look like you laid them out on your kitchen table.</p>
           <ul class="app-features-mini">
             <li>✦ pattern tray</li>
             <li>✦ slot layouts</li>
             <li>✦ font matchmaker</li>
           </ul>
           <div class="app-cta-row">
-            <a href="https://ppages.checkdesignz.com" target="_blank" rel="noopener noreferrer" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
-            <a href="https://ppages.checkdesignz.com" target="_blank" rel="noopener noreferrer" class="try-link">try it →</a>
+            <a href="pattern-pages.html" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
           </div>
         </div>
         <div class="app-image-frame">
           <img src="assets/app-pattern-pages.jpg" width="1024" height="768" loading="lazy" alt="Hand-drawn grid of yellow pattern tiles on a sketchbook page" />
         </div>
       </div>
-
-      <div class="app-details">
-        <h4>what it can do</h4>
-        <div class="feature-grid">
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>pattern tray</h5><p>All your tiles in one drawer, always a tap away.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>slot layouts</h5><p>Pick a spot on the canvas and your tile snaps neatly in.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>font matchmaker</h5><p>Type pairings picked to suit the mood of your art.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>recolour anything</h5><p>Shift shape colours and image tints without leaving the page.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>tidy alignment</h5><p>Snap, centre and space so nothing sits crooked.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>save &amp; restore</h5><p>Quick saves, templates and autosave rescue, always.</p></div>
-        </div>
-        <div class="reviews">
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"My shop finally looks like one shop instead of forty random uploads."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="background: color-mix(in oklab, var(--mustard) 45%, var(--card)); transform: rotate(1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"I made twelve listing pages while dinner was in the oven."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"It looks handmade, which is exactly the point."</blockquote><figcaption>— Sample review</figcaption></figure>
-        </div>
-      </div>
     </article>
 
-    <!-- Magic Collection Builder -->
-    <article id="magic-collection-builder" class="doodle-card app-card" style="background: color-mix(in oklab, var(--lilac) 45%, var(--card)); transform: rotate(0.7deg);">
+    <article class="doodle-card app-card" style="background: color-mix(in oklab, var(--lilac) 45%, var(--card)); transform: rotate(0.7deg);">
       <div class="app-top">
         <div class="order-2">
           <p class="app-eyebrow">🪄 turn loose designs into a proper collection</p>
           <h3 class="app-name">Magic Collection Builder</h3>
           <p class="app-blurb">Gather your motifs, borrow a palette and let coordinating patterns and blenders appear.</p>
-          <p class="muted" style="margin-top:0.75rem; font-size:1.1rem;">Every collection needs a hero, a few sidekicks and some quiet blenders. This one waves a wand over your motifs and hands you a whole coordinated family.</p>
           <ul class="app-features-mini">
             <li>✦ hero &amp; helpers</li>
             <li>✦ instant blenders</li>
             <li>✦ palette borrowing</li>
           </ul>
           <div class="app-cta-row">
-            <a href="https://magiccollectionbuilder.checkdesignz.workers.dev" target="_blank" rel="noopener noreferrer" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
-            <a href="https://magiccollectionbuilder.checkdesignz.workers.dev" target="_blank" rel="noopener noreferrer" class="try-link">try it →</a>
+            <a href="magic-collection-builder.html" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
           </div>
         </div>
         <div class="app-image-frame">
           <img src="assets/app-collection-builder.jpg" width="1024" height="768" loading="lazy" alt="Hand-drawn magic wand with sparkles over a folder of floral pattern cards" />
         </div>
       </div>
-
-      <div class="app-details">
-        <h4>what it can do</h4>
-        <div class="feature-grid">
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>hero &amp; helpers</h5><p>One main print plus coordinates that genuinely go together.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>instant blenders</h5><p>Stripes, spots and textures pulled from your own palette.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>palette borrowing</h5><p>Lift colours from any artwork and lock the collection to them.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>colourways</h5><p>Same collection, several moods, one click apart.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>collection sheets</h5><p>A tidy overview page to show buyers or clients.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>export the lot</h5><p>Every tile, every colourway, zipped and named.</p></div>
-        </div>
-        <div class="reviews">
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"It found coordinates I'd never have thought to draw."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="background: color-mix(in oklab, var(--lilac) 45%, var(--card)); transform: rotate(1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"A full collection in an afternoon instead of a fortnight."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"The colourway feature alone is worth it."</blockquote><figcaption>— Sample review</figcaption></figure>
-        </div>
-      </div>
     </article>
 
-    <!-- Pattern Playground -->
-    <article id="pattern-playground" class="doodle-card app-card" style="background: color-mix(in oklab, var(--blush) 55%, var(--card)); transform: rotate(-0.7deg);">
+    <article class="doodle-card app-card" style="background: color-mix(in oklab, var(--blush) 55%, var(--card)); transform: rotate(-0.7deg);">
       <div class="app-top">
         <div>
           <p class="app-eyebrow">🎠 make seamless repeats and actually enjoy it</p>
           <h3 class="app-name">Pattern Playground</h3>
           <p class="app-blurb">Scatter your motifs, watch the repeat tile live, and play until it feels right.</p>
-          <p class="muted" style="margin-top:0.75rem; font-size:1.1rem;">The messy, joyful bit. Throw motifs onto the canvas, spin them, scatter them, and see the seamless repeat update as you go — no maths, no guessing at the edges.</p>
           <ul class="app-features-mini">
             <li>✦ live repeat view</li>
             <li>✦ clever scatter</li>
             <li>✦ half-drop &amp; brick</li>
           </ul>
           <div class="app-cta-row">
-            <a href="https://playground.checkdesignz.com" target="_blank" rel="noopener noreferrer" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
-            <a href="https://playground.checkdesignz.com" target="_blank" rel="noopener noreferrer" class="try-link">try it →</a>
+            <a href="pattern-playground.html" class="doodle-pill" style="background: var(--card); padding: 0.5rem 1.75rem; font-family: var(--font-display); font-size: 1.5rem;">take a look</a>
           </div>
         </div>
         <div class="app-image-frame">
           <img src="assets/app-playground.jpg" width="1024" height="768" loading="lazy" alt="Hand-drawn seamless repeat of pink leaves, stars and dots over a grid" />
-        </div>
-      </div>
-
-      <div class="app-details">
-        <h4>what it can do</h4>
-        <div class="feature-grid">
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>live repeat view</h5><p>See the tile repeating while you move things around.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>clever scatter</h5><p>Random placement that still looks deliberate and balanced.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>half-drop &amp; brick</h5><p>Switch repeat styles and watch the whole thing rearrange.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>motif library</h5><p>Keep your doodles in one drawer and reuse them everywhere.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(-1deg);"><h5>density dial</h5><p>Busy or breezy, slide until the balance feels right.</p></div>
-          <div class="doodle-card feature-tile" style="transform: rotate(1deg);"><h5>seamless exports</h5><p>Tiles that truly join up, ready for print or print-on-demand.</p></div>
-        </div>
-        <div class="reviews">
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"The edges just work. I stopped dreading repeats."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="background: color-mix(in oklab, var(--blush) 55%, var(--card)); transform: rotate(1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"It's the only design tool that feels like playing."</blockquote><figcaption>— Sample review</figcaption></figure>
-          <figure class="doodle-card review" style="transform: rotate(-1.2deg);"><p class="stars" aria-hidden="true">★★★★★</p><blockquote>"Half-drop in one click changed how I design."</blockquote><figcaption>— Sample review</figcaption></figure>
         </div>
       </div>
     </article>
@@ -646,11 +215,11 @@
 
 <footer class="site">
   <div class="foot-links">
-    <a href="#creative-resizer">Creative Resizer</a>
-    <a href="#mockup-studio">Mock-up Studio</a>
-    <a href="#pattern-pages">Pattern Pages</a>
-    <a href="#magic-collection-builder">Magic Collection Builder</a>
-    <a href="#pattern-playground">Pattern Playground</a>
+    <a href="creative-resizer.html">Creative Resizer</a>
+    <a href="mockup-studio.html">Mock-up Studio</a>
+    <a href="pattern-pages.html">Pattern Pages</a>
+    <a href="magic-collection-builder.html">Magic Collection Builder</a>
+    <a href="pattern-playground.html">Pattern Playground</a>
   </div>
   <p class="colophon">Seamless Creative · drawn with love, one wobbly line at a time</p>
 </footer>
