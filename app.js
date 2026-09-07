@@ -7,7 +7,7 @@
   var lastFocused = null;
 
   function openModal(name, url) {
-    titleEl.textContent = "Ready to try " + name + "?";
+    titleEl.textContent = "Start your free 7-day trial of " + name + "?";
     goBtn.setAttribute("href", url);
     lastFocused = document.activeElement;
     modal.hidden = false;
