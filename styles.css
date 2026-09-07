@@ -211,9 +211,10 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   height: 3.5rem;
   flex-shrink: 0;
   border: 2.5px solid var(--ink);
-  border-radius: 50%;
+  border-radius: 30% 10% 25% 12% / 12% 25% 10% 30%;
   box-shadow: 3px 3px 0 0 var(--ink);
   object-fit: cover;
+  background: var(--card);
 }
 @media (min-width: 640px) {
   .title-icon { width: 4.25rem; height: 4.25rem; }
