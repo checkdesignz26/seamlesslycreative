@@ -256,17 +256,18 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 }
 .title-row h1, .title-row .app-name { margin-top: 0; min-width: 0; }
 .title-icon {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.25rem;
+  height: 4.25rem;
   flex-shrink: 0;
   border: 2.5px solid var(--ink);
   border-radius: 30% 10% 25% 12% / 12% 25% 10% 30%;
   box-shadow: 3px 3px 0 0 var(--ink);
-  object-fit: cover;
+  object-fit: contain;
+  padding: 0.2rem;
   background: var(--card);
 }
 @media (min-width: 640px) {
-  .title-icon { width: 4.25rem; height: 4.25rem; }
+  .title-icon { width: 5.25rem; height: 5.25rem; }
 }
 
 /* collection */
@@ -315,10 +316,11 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 
 .app-image-frame {
   overflow: hidden;
-  border-radius: 1rem;
-  border: 2px solid var(--ink);
+  border-radius: 48px 16px 48px 16px / 16px 42px 16px 42px;
+  border: 2.5px solid var(--ink);
   background: var(--card);
-  padding: 0.5rem;
+  box-shadow: 6px 7px 0 0 var(--ink);
+  padding: 0.85rem;
   min-width: 0;
 }
 .app-image-frame img { border-radius: inherit; width: 100%; }
