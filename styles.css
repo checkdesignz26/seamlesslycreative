@@ -165,7 +165,7 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .hero-illustration {
   width: 100%;
   max-width: 300px;
-  justify-self: end;
+  justify-self: center;
 }
 @media (min-width: 768px) { .hero-illustration { max-width: 320px; } }
 .hero-illustration.shadowed {
@@ -181,7 +181,7 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   position: relative;
   width: 100%;
   max-width: 260px;
-  justify-self: end;
+  justify-self: center;
 }
 @media (min-width: 768px) { .photo-stack { max-width: 280px; } }
 .photo-card {
