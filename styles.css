@@ -449,6 +449,16 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   text-align: center;
 }
 .pin-caption:hover { text-decoration: underline; }
+.pin-tag {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.15rem 0.75rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--sage) 55%, var(--card));
+  color: var(--ink);
+}
 
 .strip-controls {
   display: flex;
@@ -637,7 +647,8 @@ footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted
   font-size: 1.35rem;
 }
 .form-field input,
-.form-field textarea {
+.form-field textarea,
+.form-field select {
   font-family: var(--font-body);
   font-size: 1.1rem;
   padding: 0.6rem 0.9rem;
@@ -651,7 +662,8 @@ footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted
   resize: vertical;
 }
 .form-field input:focus,
-.form-field textarea:focus {
+.form-field textarea:focus,
+.form-field select:focus {
   outline: 2.5px solid var(--coral);
   outline-offset: 1px;
 }
