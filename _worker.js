@@ -1,27 +1,30 @@
-// Cloudflare Pages Function - handles POST /api/contact from contact.html.
-// Auto-detected by Cloudflare from this file's path under functions/, no
-// wrangler.toml or extra deploy config needed - runs alongside the static
-// site on the same domain.
+// Worker entry point for the seamlesslycreative static site.
 //
-// Replaces Formspree for this form specifically because Formspree's free
-// plan rejects file attachments outright ("File Uploads Not Permitted").
-// Sends the message (and an optional image attachment) as an email via
-// Resend instead - the same service already used for Pattern Pages'
-// access-key emails, so the account/domain verification can be reused.
+// This project deploys as a Cloudflare Worker with static assets (not
+// classic Pages), so file-based Pages Functions (functions/api/*.js) are
+// never picked up - this script is the real entry point instead. It serves
+// the static site via the ASSETS binding, and handles POST /api/contact
+// itself (the contact form), sending mail via Resend.
 //
-// SETUP (Cloudflare dashboard, for this Pages project):
-// Settings -> Environment variables -> add:
-//   RESEND_API_KEY (encrypted) - an API key from resend.com
-//   FROM_EMAIL (plain) - e.g. "Seamlessly Creative <hello@checkdesignz.com>",
-//     using a domain verified in Resend. Optional - falls back to Resend's
-//     own test address if not set.
+// SETUP (Cloudflare dashboard -> this Worker -> Settings -> Variables and secrets):
+//   RESEND_API_KEY (encrypt) - an API key from resend.com
+//   FROM_EMAIL (plain, optional) - e.g. "Seamlessly Creative <hello@checkdesignz.com>",
+//     using a domain verified in Resend. Falls back to Resend's test address if unset.
 
 const TO_EMAIL = 'checkdesignz@gmail.com';
 const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024; // 8MB
 
-export async function onRequestPost(context) {
-  const { request, env } = context;
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (request.method === 'POST' && url.pathname === '/api/contact') {
+      return handleContact(request, env);
+    }
+    return env.ASSETS.fetch(request);
+  },
+};
 
+async function handleContact(request, env) {
   let form;
   try {
     form = await request.formData();
