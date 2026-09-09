@@ -57,7 +57,7 @@
 
   <section class="page-section">
     <div class="doodle-card contact-form-card" style="transform: rotate(-0.4deg);">
-      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mdeowobr" method="POST">
+      <form id="contact-form" class="contact-form" action="/api/contact" method="POST" enctype="multipart/form-data">
         <div class="form-field">
           <label for="name">name</label>
           <input type="text" id="name" name="name" autocomplete="name" required />
@@ -84,7 +84,10 @@
           <label for="social_link">your shop or social link (optional)</label>
           <input type="url" id="social_link" name="social_link" placeholder="https://instagram.com/your_shop" autocomplete="url" />
         </div>
-        <input type="hidden" name="_subject" value="New message from Seamlessly Creative" />
+        <div class="form-field">
+          <label for="attachment">attach a creation (optional)</label>
+          <input type="file" id="attachment" name="attachment" accept="image/*" />
+        </div>
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
         <button type="submit" class="doodle-pill cta-coral contact-submit">send message</button>
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
