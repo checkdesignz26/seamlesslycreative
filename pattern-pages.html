@@ -57,12 +57,27 @@
 
   <section class="page-section">
     <h2>see it in action</h2>
-    <div class="creative-showcase-container">
-      <div class="design-roll">
-        <div class="design-frame"><span>📸 screenshot 1</span></div>
-        <div class="design-frame"><span>📸 screenshot 2</span></div>
-        <div class="design-frame"><span>📸 screenshot 3</span></div>
+    <div class="tape-container" data-scroll-strip>
+      <div class="measuring-tape-wave">
+        <div class="tape-track">
+          <div class="tape-frame">
+            <div class="tape-frame-placeholder"><span>📸 screenshot 1</span></div>
+            <span class="tape-inch-marker">no. 01</span>
+          </div>
+          <div class="tape-frame">
+            <div class="tape-frame-placeholder"><span>📸 screenshot 2</span></div>
+            <span class="tape-inch-marker">no. 02</span>
+          </div>
+          <div class="tape-frame">
+            <div class="tape-frame-placeholder"><span>📸 screenshot 3</span></div>
+            <span class="tape-inch-marker">no. 03</span>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="strip-controls">
+      <button type="button" class="strip-arrow" data-scroll-dir="-1" aria-label="Show previous screenshot">‹</button>
+      <button type="button" class="strip-arrow" data-scroll-dir="1" aria-label="Show next screenshot">›</button>
     </div>
   </section>
 

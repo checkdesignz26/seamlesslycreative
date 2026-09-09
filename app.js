@@ -83,3 +83,42 @@
       });
   });
 })();
+
+(function () {
+  var strips = document.querySelectorAll("[data-scroll-strip]");
+  if (!strips.length) return;
+
+  Array.prototype.forEach.call(strips, function (strip) {
+    var controls = strip.parentElement ? strip.parentElement.querySelectorAll(".strip-arrow") : [];
+    var frame = strip.querySelector(".tape-frame");
+    var step = frame ? frame.getBoundingClientRect().width : 280;
+
+    Array.prototype.forEach.call(controls, function (btn) {
+      btn.addEventListener("click", function () {
+        var dir = parseInt(btn.getAttribute("data-scroll-dir"), 10) || 1;
+        strip.scrollBy({ left: dir * step, behavior: "smooth" });
+      });
+    });
+
+    // Native overflow-x scrolling only responds to trackpad/touch/scrollbar
+    // gestures, not a mouse click-and-drag - since the container promises
+    // that with its grab cursor, wire up the drag itself.
+    var isDown = false;
+    var dragStartX = 0;
+    var scrollStartLeft = 0;
+
+    strip.addEventListener("mousedown", function (e) {
+      isDown = true;
+      dragStartX = e.pageX;
+      scrollStartLeft = strip.scrollLeft;
+    });
+    window.addEventListener("mouseup", function () {
+      isDown = false;
+    });
+    window.addEventListener("mousemove", function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      strip.scrollLeft = scrollStartLeft - (e.pageX - dragStartX);
+    });
+  });
+})();
