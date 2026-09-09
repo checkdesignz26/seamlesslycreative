@@ -325,34 +325,56 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 }
 .app-image-frame img { border-radius: inherit; width: 100%; }
 
-.screenshot-frame {
-  max-width: 50rem;
-  margin: 0 auto;
-  padding: 0.85rem;
-  background: var(--card);
-  border: 2.5px solid var(--ink);
-  border-radius: 48px 16px 48px 16px / 16px 42px 16px 42px;
-  box-shadow: 6px 7px 0 0 var(--ink);
+/* "see it in action" screenshot strip - same film-strip/perforated-roll
+   structure as a classic dark product showcase, reskinned in the site's
+   own warm ink/cream tones instead of black/gray so it still reads as
+   part of the same hand-crafted brand rather than a bolted-on demo widget. */
+.creative-showcase-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--ink);
+  padding: 50px 20px;
+  box-sizing: border-box;
+  border-radius: 1.25rem;
 }
-.screenshot-frame img { display: block; width: 100%; border-radius: inherit; }
-.screenshot-frame.placeholder {
-  aspect-ratio: 16 / 10;
+.design-roll {
+  display: inline-flex;
+  gap: 20px;
+  background-color: color-mix(in oklab, var(--ink) 88%, white);
+  padding: 40px 24px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  /* Perforation holes "punch through" to the container's own ink
+     background, same trick as the original dark version. */
+  background-image:
+    repeating-linear-gradient(90deg, transparent, transparent 20px, var(--ink) 20px, var(--ink) 32px),
+    repeating-linear-gradient(90deg, transparent, transparent 20px, var(--ink) 20px, var(--ink) 32px);
+  background-size: 100% 8px, 100% 8px;
+  background-position: top 16px center, bottom 16px center;
+  background-repeat: no-repeat;
+}
+.design-frame {
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+  background-color: var(--card);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--ink) 15%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
-  background: repeating-linear-gradient(
-    135deg,
-    var(--card),
-    var(--card) 12px,
-    color-mix(in oklab, var(--ink) 7%, var(--card)) 12px,
-    color-mix(in oklab, var(--ink) 7%, var(--card)) 24px
-  );
+  padding: 1.5rem;
   color: var(--muted-foreground);
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.design-frame img { width: 100%; height: 100%; object-fit: cover; }
+.design-frame:hover { transform: scale(1.03); }
 
 .page-section {
   max-width: 72rem;
