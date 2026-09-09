@@ -407,6 +407,38 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   font-weight: bold;
   opacity: 0.7;
 }
+
+/* Community page - a corkboard-style pinboard of buyer creations, deliberately
+   messy: varied tile sizes, scattered rotations, each one taped up rather
+   than sitting in a tidy grid. */
+.pinboard {
+  background: color-mix(in oklab, var(--mustard) 70%, var(--card));
+  border: 2.5px solid var(--ink);
+  border-radius: 250px 18px 235px 18px / 18px 220px 18px 235px;
+  box-shadow: 5px 6px 0 0 var(--ink);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.pin-photo {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  padding: 0.6rem 0.6rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-family: var(--font-display);
+  box-shadow: 3px 4px 0 0 color-mix(in oklab, var(--ink) 60%, transparent);
+}
+.pin-photo.size-sm { width: 150px; height: 170px; font-size: 1.1rem; }
+.pin-photo.size-md { width: 190px; height: 230px; font-size: 1.25rem; }
+.pin-photo.size-lg { width: 230px; height: 270px; font-size: 1.4rem; }
+
 .strip-controls {
   display: flex;
   justify-content: center;
@@ -651,45 +683,6 @@ footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted
   stroke-width: 1.4;
 }
 .portfolio-note {
-  text-align: center;
-  color: var(--muted-foreground);
-  margin-top: 2rem;
-  font-size: 1.1rem;
-}
-
-/* "made with" designer showcase - same placeholder-grid idea as the
-   portfolio gallery, plus a spot for each designer's own social link */
-.showcase-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-.showcase-tile {
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 1.5rem;
-  text-align: center;
-  color: var(--muted-foreground);
-}
-.showcase-tile svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  stroke: var(--muted-foreground);
-  fill: none;
-  stroke-width: 1.4;
-}
-.showcase-link {
-  font-size: 0.95rem;
-  color: var(--muted-foreground);
-  text-decoration: none;
-  text-underline-offset: 3px;
-}
-.showcase-link:hover { text-decoration: underline; }
-.showcase-note {
   text-align: center;
   color: var(--muted-foreground);
   margin-top: 2rem;
