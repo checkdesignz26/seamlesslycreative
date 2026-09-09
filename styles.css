@@ -581,6 +581,45 @@ footer.site .colophon { margin-top: 1rem; text-align: center; color: var(--muted
   font-size: 1.1rem;
 }
 
+/* "made with" designer showcase - same placeholder-grid idea as the
+   portfolio gallery, plus a spot for each designer's own social link */
+.showcase-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.showcase-tile {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--muted-foreground);
+}
+.showcase-tile svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke: var(--muted-foreground);
+  fill: none;
+  stroke-width: 1.4;
+}
+.showcase-link {
+  font-size: 0.95rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+.showcase-link:hover { text-decoration: underline; }
+.showcase-note {
+  text-align: center;
+  color: var(--muted-foreground);
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
 /* trial prompt modal */
 .modal-overlay {
   position: fixed;
