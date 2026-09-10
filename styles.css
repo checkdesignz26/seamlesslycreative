@@ -438,7 +438,17 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .pin-photo.size-sm { width: 150px; height: 170px; font-size: 1.1rem; }
 .pin-photo.size-md { width: 190px; height: 230px; font-size: 1.25rem; }
 .pin-photo.size-lg { width: 230px; height: 270px; font-size: 1.4rem; }
+.pin-photo img { width: 100%; height: 100%; object-fit: cover; }
 .pin-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.pin-quote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink);
+  max-width: 13rem;
+  text-align: center;
+  margin: 0;
+}
 .pin-caption {
   font-family: var(--font-body);
   font-size: 0.95rem;
