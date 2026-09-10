@@ -449,10 +449,17 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
   text-align: center;
   margin: 0;
 }
+.pin-credit {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-bottom: -0.35rem;
+}
 .pin-caption {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  color: var(--muted-foreground);
+  font-weight: 700;
+  color: var(--ink);
   text-decoration: none;
   text-underline-offset: 3px;
   max-width: 12rem;
