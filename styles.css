@@ -344,7 +344,9 @@ nav.site-nav a:hover, nav.site-nav a[aria-current="page"] { text-decoration: und
 .measuring-tape-wave {
   width: max-content;
   display: flex;
-  transform: skewY(-3deg) rotate(-0.5deg);
+  transform: skewY(-3deg) rotate(-0.5deg) translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
   position: relative;
   pointer-events: none;
 }
